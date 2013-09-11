@@ -1,0 +1,15 @@
+安装前提：
+	PHP
+
+源码安装：
+
+	1、tar -zxvf ldap-account-manager-4.2.1.tar.gz
+
+	2、mv ladp-account-manager-4.2.1 /srv/website/lam
+		
+	3、cp config.cfg_sample config.cfg
+	
+	4、cp lam.conf_sample lam.conf
+	
+	5、
+

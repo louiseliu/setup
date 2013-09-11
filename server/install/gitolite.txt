@@ -1,0 +1,51 @@
+安装前提：
+
+	1、vi /etc/ssh/sshd_config 
+	
+		PermitUserEnvironment yes
+	
+	2、mkdir .ssh
+	
+	3、env > .ssh/environment
+	
+	4、/etc/init.d/sshd restart
+
+源码安装：
+	
+	1、yum -y install perl-Time-HiRes
+	
+	2、tar -zxf gitolite-3.5.2.tar.gz
+	
+	3、./install -to /usr/local/gitolite-3.5.2/bin
+	
+		或者
+		
+		(1) cp -R gitolite-3.5.2/* /usr/local/gitolite-3.5.2/
+		
+		(2) ln -s src/ bin 
+	
+	4、ln -s gitolite-3.5.2/ gitolite
+	
+	5、su -
+	
+	6、useradd git
+	
+	7、passwd git
+	
+	8、su - git
+	
+	9、ssh-keygen -t rsa -f ~/.ssh/admin
+	
+	10、gitolite setup -pk ~/.ssh/admin.pub
+	
+	11、chmod go-rwx .
+	
+	12、chmod -R go-rwx .ssh
+	
+	11、cp -R * /var/lib/git/
+	
+	12、rm -rf repositories
+	
+	13、ln -s /var/lib/git/ repositories
+	
+	14、git clone git@ci-server:gitolite-admin

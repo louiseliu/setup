@@ -1,0 +1,30 @@
+安装前提：
+
+	Berkeley DB
+
+源码安装：
+
+	1、yum install  libtool-ltdl libtool-ltdl-devel
+	
+	2、vi /etc/hosts
+
+		去掉 ::1 行
+
+	3、export CPPFLAGS="-I/usr/local/berkeley/include"
+
+	4、export LDFLAGS="-L/usr/local/berkeley/lib"
+
+	5、./configure --prefix=/usr/local/openldap-2.4.36 --enable-bdb --enable-modules --enable-ldap 
+
+	6、env CPPFLAGS="-I/usr/local/berkeley/include" LDFLAGS="-L/usr/local/berkeley/lib" LD_LIBRARY_PATH="/usr/local/berkeley/lib" ./configure --prefix=/usr/local/openldap-2.4.36 --enable-bdb=mod --enable-hdb=mod --enable-ldap=mod --enable-monitor=mod --enable-spasswd=yes --enable-modules=yes --enable-overlays=mod --with-cyrus-sasl --enable-dynacl=yes --enable-crypt=yes --enable-lmpasswd=yes
+	
+	6、make depend  && make && make test && make install
+
+	2、vi /etc/sysconfig/ldap
+		
+		SLAPD_LDAPI=yes
+
+	3、
+参考文档：
+
+	http://www.server-world.info/en/note?os=CentOS_6&p=ldap

@@ -1,0 +1,43 @@
+安装前提：
+
+源码安装：
+
+	1、CREATE DATABASE gerrit;
+	
+	2、CREATE USER 'zxlsal'@'localhost' IDENTIFIED BY 'password';
+	
+	3、GRANT ALL ON gerrit.* TO 'zxlsal'@'localhost';
+	
+	4、FLUSH PRIVILEGES;
+
+	5、java -jar gerrit-2.6.1.war init -d /var/gerrit
+
+APACHE整合
+
+	1、去掉 http.conf 中 LoadModule proxy_module modules/mod_proxy.so 前的“#”
+	
+	2、去掉 http.conf 中 LoadModule proxy_http_module modules/mod_proxy_http.so 前的“#”
+	
+	3、在 http.conf 中最后增加以下内容
+		
+		<VirtualHost *:80>
+	
+		    ProxyVia            Off
+		    ProxyRequests       Off
+		    ProxyPreserveHost   On
+		
+		    <Proxy *>
+		        Order deny,allow
+		        Allow from all
+		    </Proxy>
+		
+		    <Location /gerrit/login/>
+		        AuthType Basic
+		        AuthName "Gerrit Code Review"
+		        Require valid-user
+		        AuthUserFile /srv/website/.htpasswd
+		    </Location>
+		
+		    ProxyPass /svn !
+		    ProxyPass / http://127.0.0.1:8080/
+		</VirtualHost>

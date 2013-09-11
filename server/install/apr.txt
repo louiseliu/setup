@@ -1,0 +1,11 @@
+安装前提：
+
+源码安装：
+
+	1、tar -zxvf apr-1.4.8.tar.gz	
+
+	2、./configure --prefix=/usr/local/apr-1.4.8
+		
+	3、make && make install && make clean
+	
+	4、ln -s apr-1.4.8/ apr

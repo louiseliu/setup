@@ -1,0 +1,42 @@
+安装前提：
+	apr、 apr-util、zlib、sqlite、apache
+
+源码安装：
+	
+	1、tar -zxf subversion-1.7.11.tar.gz
+	
+	2、mkdir -p /usr/local/src/subversion-1.7.11/sqlite-amalgamation
+	
+	3、cp /usr/local/src/sqlite-3.8.0.1/sqlite3.c /usr/local/src/subversion-1.7.11/sqlite-amalgamation/sqlite3.c
+	
+	4、./configure --prefix=/usr/local/subversion-1.7.11 --with-apxs=/usr/local/apache/bin/apxs --with-apr=/usr/local/apr/ --with-apr-util=/usr/local/apr-util/ --with-zlib=/usr/local/zlib
+	
+	5、make && make install && make clean
+	
+	6、ln -s subversion-1.7.11/ subversion
+	
+APACHE整合
+
+	1、去掉 http.conf 中 LoadModule dav_module modules/mod_dav.so 前的“#”
+	
+	2、在 http.conf 中最后增加以下内容
+		
+		########################################################
+		##
+		## Subversion 版本控制
+		##
+		########################################################
+		
+		LoadModule dav_svn_module modules/mod_dav_svn.so
+		LoadModule authz_svn_module modules/mod_authz_svn.so
+		
+		<Location /svn>
+		    DAV svn
+		    AuthType Basic
+		    AuthName "Subversion repositories"
+		    SVNListParentPath on
+		    SVNParentPath "/srv/svn"
+		    AuthUserFile "/var/lib/svn/passwd.conf"
+		    AuthzSVNAccessFile "/srv/svn/authz.conf"
+		    Require valid-user
+		</Location>

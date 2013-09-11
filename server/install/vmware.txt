@@ -1,0 +1,12 @@
+安装前提：
+	1、打开文件共享 settings -> options -> shared folders
+		
+源码安装：
+
+	1、yum -y install gcc kernel kernel-devel
+	
+	2、tar -zxvf VMwareTools-9.2.3-1031360.tar.gz
+	
+	3、vmware-tools-distrib/vmware-install.pl
+	
+	4、一直回车

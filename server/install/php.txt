@@ -1,0 +1,28 @@
+安装前提：
+	1、apache、mysql、libxml2、libxml2-devel
+
+	2、cp -frp /usr/lib64/libldap* /usr/lib/
+源码安装：
+
+	1、yum -y install libxml2 libxml2-devel
+
+	2、tar -zxvf php-5.5.3.tar.gz
+
+	3、./configure --prefix=/usr/local/php-5.5.3 --with-apxs2=/usr/local/apache/bin/apxs --with-mysql=/usr/local/mysql --with-mysqli=/usr/local/mysql/bin/mysql_config --with-ldap --enable-zip --with-gettext
+		
+	4、make && make install && make clean
+	
+	5、ln -s php-5.5.3/ php
+
+APACHE整合
+
+	1、去掉 http.conf 中 LoadModule php5_module modules/libphp5.so 前的“#”
+	
+	2、在 http.conf 中最后增加以下内容
+
+		AddType application/x-httpd-php .php .php4 .php5 .php .phtml
+
+	3、修改 http.conf 中 DirectoryIndex 为
+
+		DirectoryIndex index.php index.html
+

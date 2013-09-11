@@ -1,0 +1,13 @@
+安装前提：
+
+源码安装：
+
+	1、yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel
+
+	1、tar -zxvf git-1.8.4.tar.gz	
+
+	2、make prefix=/usr/local/git-1.8.4 all
+	
+	3、make prefix=/usr/local/git-1.8.4 install
+	
+	4、ln -s git-1.8.4/ git

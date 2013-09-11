@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+  <!-- 本地仓库地址 -->
+  <localRepository>/var/lib/maven/repository</localRepository>
+
+  <!-- 服务器校验 -->
+  <servers>
+    <!-- 版本控制帐号和密码 -->
+    <server>
+      <id>saussurea-scm-server</id>
+      <username>zxlsal</username>
+      <password>zxlsal</password>
+    </server>
+
+    <!-- 稳定版本发布帐号和密码 -->
+    <server>
+      <id>saussurea-releases</id>
+      <username>admin</username>
+      <password>admin</password>
+    </server>
+
+    <!-- 快照版本发布帐号和密码 -->
+    <server>
+      <id>saussurea-snapshots</id>
+      <username>admin</username>
+      <password>admin</password>
+    </server>
+
+    <!-- 网站发布帐号和密码 -->
+    <server>
+      <id>saussurea-sites</id>
+      <username>admin</username>
+      <password>admin</password>
+    </server>
+  </servers>
+
+  <!-- 镜像配置 -->
+  <mirrors>
+    <!-- 私人镜像 -->
+    <mirror>
+      <id>saussurea-central</id>
+      <name>Saussurea Public Mirror</name>
+      <url>http://127.0.0.1:8080/nexus/content/groups/public/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <!-- 私人仓库配置 -->
+    <profile>
+      <id>saussurea-profile</id>
+
+      <!-- 激活私人仓库 -->
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <!-- 私人仓库配置 -->
+      <repositories>
+        <repository>
+          <id>saussurea</id>
+          <url>http://127.0.0.1:8080/nexus/content/groups/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </repository>
+      </repositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <id>saussurea</id>
+          <url>http://127.0.0.1:8080/nexus/content/groups/public/</url>
+          <releases>
+            <enabled>true</enabled>
+            <updatePolicy>never</updatePolicy>
+          </releases>
+          <snapshots>
+            <enabled>true</enabled>
+            <updatePolicy>always</updatePolicy>
+          </snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+
+    <!-- SONAR配置 -->
+    <profile>
+      <id>saussurea-sonar</id>
+
+      <!-- 激活该属性 -->
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+
+      <!-- 自定义属性 -->
+      <properties>
+        <sonar.jdbc.url><![CDATA[jdbc:mysql://localhost:3306/sonar?useUnicode=true&characterEncoding=utf8]]></sonar.jdbc.url>
+        <sonar.jdbc.driver>com.mysql.jdbc.Driver</sonar.jdbc.driver>
+        <sonar.jdbc.username>sonar</sonar.jdbc.username>
+        <sonar.jdbc.password>sonar</sonar.jdbc.password>
+        <sonar.host.url>http://127.0.0.1:8080/sonar</sonar.host.url>
+      </properties>
+    </profile>
+  </profiles>
+</settings>

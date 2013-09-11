@@ -1,0 +1,24 @@
+安装前提：
+	apr、 apr-util、 pcre
+
+源码安装：
+	
+	1、rpm -e httpd --nodeps
+	
+	2、yum -y install ncurses ncurses-devel gcc-c++ cmake
+	
+	3、tar -zxf httpd-2.4.6.tar.gz
+	
+	4、./configure --prefix=/usr/local/httpd-2.4.6 --with-apr=/usr/local/apr/ --with-apr-util=/usr/local/apr-util/ --with-pcre=/usr/local/pcre/ --enable-dav --enable-so --enable-module=so
+	
+	5、make && make install && make clean
+	
+	6、ln -s httpd-2.4.6/ apache
+	
+	7、cp /usr/local/apache/bin/apachectl /etc/init.d/httpd
+	
+	8、去掉 httpd.conf 中 #ServerName www.example.com:80 前的“#”
+	
+	9、iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+	
+	10、service iptables save

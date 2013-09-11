@@ -1,0 +1,40 @@
+安装前提：
+	cmake
+
+源码安装：
+
+	1、yum -y install cmake
+	
+	2、tar -zxf mysql-5.6.13.tar.gz
+	
+	3、cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql-5.6.13 -DMYSQL_DATADIR=/var/lib/mysql/data -DSYSCONFDIR=/etc/mysql -DMYSQL_UNIX_ADDR=/var/run/mysql/mysqld.sock  -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci -DEXTRA_CHARSETS=all -DMYSQL_USER=root
+	
+	4、make && make install
+	
+	5、ln -s mysql-5.6.13/ mysql
+	
+	6、mkdir -p /etc/mysql /var/log/mysql
+	
+	7、mkdir -p /var/lib/mysql/data /var/run/mysql
+	
+	8、cp support-files/my-default.cnf /etc/mysql/my.cnf
+		
+	9、chmod 755 scripts/mysql_install_db
+	
+	10、scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/var/lib/mysql/data --defaults-file=/etc/mysql/my.cnf --user=root
+	
+	11、cp support-files/mysql.server /etc/init.d/mysql
+	
+	12、chmod 755 /etc/init.d/mysql
+	
+	13、chkconfig --add mysql 增加自启动
+	
+	14、iptables -I INPUT -p tcp --dport 3306 -j ACCEPT
+	
+	15、service iptables save
+	
+启动数据库
+
+	一、bin/mysqld_safe --user=root &
+	
+	二、service mysql start
