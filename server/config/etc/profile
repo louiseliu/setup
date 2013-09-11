@@ -107,6 +107,7 @@ function installsoft () {
 installsoft /usr/local/subversion /usr/local/git /usr/local/gitolite
 installsoft /usr/local/mysql /usr/local/apache
 installsoft /usr/local/java /usr/local/ant /usr/local/maven
+installsoft /usr/local/berkeley /usr/local/ladp
 
 export JAVA_HOME=/usr/local/java
 export CLASSPATH=$JAVA_HOME/lib:$JAVA_HOME/jre/lib

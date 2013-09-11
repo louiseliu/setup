@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+    http://pmd.sourceforge.net
+    http://blog.csdn.net/jack0511/article/category/510751/1 
+-->
+<ruleset name="Saussurea-Rules" 
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd"
+    xsi:noNamespaceSchemaLocation="http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+    <description>This ruleset checks the code for discouraged programming constructs.</description>
+
+    <!-- Basic Rules -->
+    <!-- The Basic Ruleset contains a collection of good practices which everyone should follow -->
+    <rule ref="rulesets/basic.xml">
+        <exclude name="EmptyCatchBlock" />
+    </rule>
+    <rule ref="rulesets/basic.xml/EmptyCatchBlock">
+        <properties>
+            <property name="allowCommentedBlocks" value="true" />
+        </properties>
+    </rule>
+
+    <!-- Braces Rules -->
+    <!-- The Braces Ruleset contains a collection of braces rules -->
+    <rule ref="rulesets/braces.xml" />
+
+    <!-- Clone Implementation Rules -->
+    <!-- The Clone Implementation ruleset contains a collection of rules that find questionable usages of the clone() method -->
+    <rule ref="rulesets/clone.xml" />
+
+    <!-- Code Size Rules -->
+    <!-- The Code Size Ruleset contains a collection of rules that find code size related problems -->
+    <rule ref="rulesets/codesize.xml/ExcessiveParameterList">
+        <properties>
+            <property name="minimum" value="7" />
+        </properties>
+    </rule>
+
+    <!-- Controversial Rules -->
+    <!-- The Controversial Ruleset contains rules that, for whatever reason, are considered controversial -->
+    <rule ref="rulesets/controversial.xml/UnnecessaryConstructor" />
+    <!-- <rule ref="rulesets/controversial.xml/UnnecessaryParentheses" /> -->
+    <rule ref="rulesets/controversial.xml/AvoidAccessibilityAlteration" />
+    <rule ref="rulesets/controversial.xml/DoNotCallGarbageCollectionExplicitly" />
+
+    <!-- Coupling Rules -->
+    <!-- These are rules which find instances of high or inappropriate coupling between objects and packages -->
+    <rule ref="rulesets/coupling.xml/LooseCoupling" />
+
+    <!-- Design Rules -->
+    <!-- The Design Ruleset contains a collection of rules that find questionable designs -->
+    <rule ref="rulesets/design.xml/UseSingleton" />
+    <rule ref="rulesets/design.xml/SimplifyBooleanReturns" />
+    <rule ref="rulesets/design.xml/SimplifyBooleanExpressions" />
+    <rule ref="rulesets/design.xml/SwitchStmtsShouldHaveDefault" />
+    <rule ref="rulesets/design.xml/AvoidDeeplyNestedIfStmts" />
+    <!-- <rule ref="rulesets/design.xml/AvoidReassigningParameters" /> -->
+    <rule ref="rulesets/design.xml/SwitchDensity" />
+    <rule ref="rulesets/design.xml/AccessorClassGeneration" />
+    <rule ref="rulesets/design.xml/CloseResource" />
+    <rule ref="rulesets/design.xml/NonStaticInitializer" />
+    <rule ref="rulesets/design.xml/DefaultLabelNotLastInSwitchStmt" />
+    <rule ref="rulesets/design.xml/NonCaseLabelInSwitchStatement" />
+    <rule ref="rulesets/design.xml/OptimizableToArrayCall" />
+    <rule ref="rulesets/design.xml/BadComparison" />
+    <rule ref="rulesets/design.xml/EqualsNull" />
+    <rule ref="rulesets/design.xml/InstantiationToGetClass" />
+    <rule ref="rulesets/design.xml/IdempotentOperations" />
+    <rule ref="rulesets/design.xml/AvoidProtectedFieldInFinalClass" />
+    <rule ref="rulesets/design.xml/AssignmentToNonFinalStatic" />
+    <rule ref="rulesets/design.xml/MissingStaticMethodInNonInstantiatableClass" />
+    <rule ref="rulesets/design.xml/MissingBreakInSwitch" />
+    <rule ref="rulesets/design.xml/UseNotifyAllInsteadOfNotify" />
+    <!-- <rule ref="rulesets/design.xml/AbstractClassWithoutAbstractMethod" /> -->
+    <rule ref="rulesets/design.xml/SimplifyConditional" />
+    <rule ref="rulesets/design.xml/CompareObjectsWithEquals" />
+    <rule ref="rulesets/design.xml/PositionLiteralsFirstInComparisons" />
+    <rule ref="rulesets/design.xml/UnnecessaryLocalBeforeReturn" />
+    <rule ref="rulesets/design.xml/NonThreadSafeSingleton" />
+    <rule ref="rulesets/design.xml/UncommentedEmptyMethod" />
+    <rule ref="rulesets/design.xml/UncommentedEmptyConstructor" />
+    <rule ref="rulesets/design.xml/UnsynchronizedStaticDateFormatter" />
+    <rule ref="rulesets/design.xml/PreserveStackTrace" />    
+    <rule ref="rulesets/design.xml/UseCollectionIsEmpty" />
+    <rule ref="rulesets/design.xml/ClassWithOnlyPrivateConstructorsShouldBeFinal" />
+    <rule ref="rulesets/design.xml/EmptyMethodInAbstractClassShouldBeAbstract" />
+    <rule ref="rulesets/design.xml/ReturnEmptyArrayRatherThanNull" />
+    <rule ref="rulesets/design.xml/AbstractClassWithoutAnyMethod" />
+    <rule ref="rulesets/design.xml/TooFewBranchesForASwitchStatement" />
+
+    <!-- Finalizer Rules -->
+    <!-- These rules deal with different problems that can occur with finalizers -->
+    <rule ref="rulesets/finalizers.xml">
+        <exclude name="FinalizeShouldBeProtected" />
+    </rule>
+
+    <!-- Import Statement Rules -->
+    <!-- These rules deal with different problems that can occur with a class' import statements -->
+    <rule ref="rulesets/imports.xml">
+        <exclude name="TooManyStaticImports" />
+    </rule>
+
+    <!-- J2EE Rules -->
+    <!-- These are rules for J2EE -->
+    <!-- 
+    <rule ref="rulesets/j2ee.xml" /> -->
+
+    <!-- JavaBean Rules -->
+    <!-- The JavaBeans Ruleset catches instances of bean rules not being followed -->
+    <rule ref="rulesets/javabeans.xml/MissingSerialVersionUID" />
+
+    <!-- Junit Rules -->
+    <!-- These rules deal with different problems that can occur with JUnit tests. -->
+    <rule ref="rulesets/junit.xml/JUnitSpelling" />
+    <rule ref="rulesets/junit.xml/TestClassWithoutTestCases" />
+
+    <!-- Jakarta Commons Logging Rules -->
+    <!-- The Jakarta Commons Logging ruleset contains a collection of rules that find questionable usages of that framework -->
+    <!-- 
+    <rule ref="rulesets/logging-jakarta-commons.xml" /> -->
+
+    <!-- Java Logging Rules -->
+    <!-- The Java Logging ruleset contains a collection of rules that find questionable usages of the logger. -->
+    <rule ref="rulesets/logging-java.xml" />
+
+    <!-- Migration Rules -->
+    <!-- Contains rules about migrating from one JDK version to another. -->
+    <!-- 
+    <rule ref="rulesets/migrating.xml" /> -->
+
+    <!-- Naming Rules -->
+    <!-- The Naming Ruleset contains a collection of rules about names - too long, too short, and so forth -->
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable" />
+        <exclude name="LongVariable" />
+        <exclude name="AbstractNaming" />
+    </rule>
+    <rule ref="rulesets/naming.xml/BooleanGetMethodName">
+        <properties>
+            <property name="checkParameterizedMethods" value="false" />
+        </properties>
+    </rule>
+
+    <!-- Optimization Rules -->
+    <!-- These rules deal with different optimizations that generally apply to performance best practices -->
+    <rule ref="rulesets/optimizations.xml/UseArrayListInsteadOfVector" />
+    <rule ref="rulesets/optimizations.xml/SimplifyStartsWith" />
+    <rule ref="rulesets/optimizations.xml/UseArraysAsList" />
+    <rule ref="rulesets/optimizations.xml/AvoidArrayLoops" />
+    <rule ref="rulesets/optimizations.xml/UnnecessaryWrapperObjectCreation" />
+    <rule ref="rulesets/optimizations.xml/AddEmptyString" />
+
+    <!-- Strict Exception Rules -->
+    <!-- These rules provide some strict guidelines about throwing and catching exceptions -->
+    <rule ref="rulesets/strictexception.xml">
+      <exclude name="SignatureDeclareThrowsException" />
+      <exclude name="AvoidCatchingGenericException" />
+    </rule>
+
+    <!-- String and StringBuffer Rules -->
+    <!-- These rules deal with different problems that can occur with manipulation of the class String or StringBuffer -->
+    <!-- <rule ref="rulesets/strings.xml/AvoidDuplicateLiterals" /> -->
+    <rule ref="rulesets/strings.xml/StringInstantiation" />
+    <rule ref="rulesets/strings.xml/StringToString" />
+    <rule ref="rulesets/strings.xml/InefficientStringBuffering" />
+    <rule ref="rulesets/strings.xml/UnnecessaryCaseChange" />
+    <rule ref="rulesets/strings.xml/UseStringBufferLength" />
+    <rule ref="rulesets/strings.xml/UselessStringValueOf" />
+    <rule ref="rulesets/strings.xml/StringBufferInstantiationWithChar" />
+    <rule ref="rulesets/strings.xml/UseEqualsToCompareStrings" />
+    <rule ref="rulesets/strings.xml/AvoidStringBufferField" />
+
+    <!-- Security Code Guidelines -->
+    <!-- These rules check the security guidelines from Sun, published at http://java.sun.com/security/seccodeguide.html#gcg -->
+    <!-- 
+    <rule ref="rulesets/sunsecure.xml" /> -->
+
+    <!-- Type Resolution Rules -->
+    <!-- These are rules which resolve java Class files for comparisson, as opposed to a String -->
+    <rule ref="rulesets/typeresolution.xml/LooseCoupling" />
+    <rule ref="rulesets/typeresolution.xml/CloneMethodMustImplementCloneable" />
+    <rule ref="rulesets/typeresolution.xml/UnusedImports" />
+
+    <!-- Unused Code Rules -->
+    <!-- The Unused Code Ruleset contains a collection of rules that find unused code -->
+    <rule ref="rulesets/unusedcode.xml" />
+</ruleset>
